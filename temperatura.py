@@ -1,8 +1,12 @@
+import os
 import tkinter as tk
 from PIL import Image, ImageTk
-
+#instalar o pillow
 class TemperatureApp:
     def __init__(self, root):
+        script_dir = os.path.dirname(__file__)
+        relative_path = "alerta.png"
+        abs_flie_path = os.path.join(script_dir,relative_path)
         self.root = root
         self.root.title("Controle de Temperatura")
 
@@ -12,7 +16,7 @@ class TemperatureApp:
         self.min_temperature = 0
         # Carregar a imagem de aviso
         try:
-            self.alert_img = Image.open("alerta.png")
+            self.alert_img = Image.open(abs_flie_path)
             self.tk_alert_img = ImageTk.PhotoImage(self.alert_img)
         except IOError:
             print("Erro ao abrir a imagem de alerta. Verifique se o arquivo 'alert.png' está no diretório.")
